@@ -7,3 +7,8 @@ export function login(data) {
     },
   });
 }
+
+export function getCode() {
+  const code = 'abcdef';
+  return code;
+}

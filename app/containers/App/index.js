@@ -16,6 +16,10 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import LoginContainer from 'containers/LoginContainer/index';
 import UserContainer from 'containers/UserContainer/index';
 
+import {
+  getCode,
+} from '../../api';
+
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
   margin: 0 auto;
@@ -27,7 +31,7 @@ const AppWrapper = styled.div`
 
 export default class App extends React.Component {
   render() {
-    const userUrl = 'abc';
+    const userUrl = getCode();
     const loginUrl = `/login/${userUrl}`;
     return (
       <AppWrapper>
