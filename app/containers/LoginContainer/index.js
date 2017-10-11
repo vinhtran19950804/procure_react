@@ -16,21 +16,21 @@ import makeSelectLoginContainer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import {
-  loginRequest
+  loginRequest,
 } from './actions';
 
-import Login from '../../components/Login'
+import Login from '../../components/Login';
 
 export class LoginContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Login />
+      <Login {...this.props} />
     );
   }
 }
 
 LoginContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -39,7 +39,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    loginRequest: (data) => { dispatch(loginRequest(data)) },
+    loginRequest: (data) => { dispatch(loginRequest(data)); },
   };
 }
 

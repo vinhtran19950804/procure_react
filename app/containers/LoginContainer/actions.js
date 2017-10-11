@@ -13,20 +13,20 @@ import {
 export function loginRequest(data) {
   return {
     type: LOGIN_REQUEST,
-    data
+    data,
   };
 }
 
-export function loginSuccess(status) {
+export function loginSuccess(data) {
   return {
     type: LOGIN_SUCCESS,
-    status
+    data,
   };
 }
 
 export function loginFailure(message) {
   return {
     type: LOGIN_FAILURE,
-    message
+    message,
   }
 }

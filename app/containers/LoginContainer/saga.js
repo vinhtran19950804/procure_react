@@ -1,22 +1,24 @@
-import { take, call, put, select } from 'redux-saga/effects';
-import { takeLatest } from 'redux-saga';
+import { take, call, put, select, takeLatest } from 'redux-saga/effects';
+// import { takeLatest } from 'redux-saga';
 import { LOGIN_REQUEST } from './constants';
+import {
+  loginSuccess,
+} from './actions';
 
-import * as api from '../../api';
 
-function* watchLoginRequest() {
-  yield* takeLatest(LOGIN_REQUEST, login);
+import {
+  login,
+} from '../../api';
+
+export default function* watchLoginRequest() {
+  yield takeLatest(LOGIN_REQUEST, fetchLogin);
 }
 
-function* login(action) {
+function* fetchLogin(action) {
   try {
-    const result = yield call(api.login, action.data);
-    console.log(result);
-  } catch(e) {
-    console.log(e)
+    const result = yield call(login, action.data);
+    yield put(loginSuccess(result));
+  } catch (e) {
+    console.log(e);
   }
 }
-
-export default [
-  watchLoginRequest
-]

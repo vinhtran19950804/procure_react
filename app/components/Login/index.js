@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
 
@@ -18,30 +19,19 @@ class Login extends React.Component {
       errors: {
         username: '',
         password: '',
-      }
-    }
-  }
-  isValid = () => {
-    const { errors, isValid } = validateInput(this.state);
-
-    if (!isValid) {
-      this.setState({ errors });
-    }
-    console.log(isValid)
-    return isValid;
-
+      },
+    };
   }
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.loginRequest(this.state);
+    const { status } = this.state;
+    this.props.history.push(`/user/${status}`);
   }
   onChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    })
-  }
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
+    });
   }
   render() {
     const { username, password, isLoading, errors } = this.state;
@@ -60,7 +50,7 @@ class Login extends React.Component {
           <div className="form-group">
             <label className="control-label">
               User Name
-          </label>
+            </label>
             <input
               value={username}
               onChange={this.onChange}
@@ -115,7 +105,9 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-
+  loginRequest: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  push: PropTypes.func,
 };
 
 export default Login;
