@@ -7,7 +7,7 @@ import {
 
 
 import {
-  login,
+  authLogin,
 } from '../../api';
 
 export default function* watchLoginRequest() {
@@ -15,8 +15,9 @@ export default function* watchLoginRequest() {
 }
 
 function* fetchLogin(action) {
+  console.log(action.data)
   try {
-    const result = yield call(login, action.data);
+    const result = yield call(authLogin, action.data);
     yield put(loginSuccess(result));
   } catch (e) {
     console.log(e);

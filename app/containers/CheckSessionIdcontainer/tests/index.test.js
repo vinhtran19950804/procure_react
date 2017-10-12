@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import { GetSession } from '../index';
+// import { CheckSessionIdcontainer } from '../index';
 
-describe('<GetSession />', () => {
+describe('<CheckSessionIdcontainer />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

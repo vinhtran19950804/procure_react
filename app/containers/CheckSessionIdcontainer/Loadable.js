@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for GetSession
+ * Asynchronously loads the component for CheckSessionIdcontainer
  *
  */
 

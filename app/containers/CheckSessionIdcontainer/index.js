@@ -1,6 +1,6 @@
 /**
  *
- * GetSession
+ * CheckSessionIdcontainer
  *
  */
 
@@ -12,46 +12,47 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectGetSession from './selectors';
+import makeSelectCheckSessionIdcontainer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import {
+  checkSessionRequest
+} from './actions';
 
 import Session from '../../components/Session'
 
 import { getCode } from '../../api'
 
-export class GetSession extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+export class CheckSessionIdcontainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    console.log('session container')
     return (
-      <div>
-        <Session {...this.props} />
-      </div>
+      <Session {...this.props} />
     );
   }
 }
 
-GetSession.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+CheckSessionIdcontainer.propTypes = {
+  dispatch: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  getsession: makeSelectGetSession(),
+  checksessionidcontainer: makeSelectCheckSessionIdcontainer(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    checkSessionRequest: (sessionID) => {dispatch(checkSessionRequest(sessionID))},
   };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'getSession', reducer });
-const withSaga = injectSaga({ key: 'getSession', saga });
+const withReducer = injectReducer({ key: 'checkSessionIdcontainer', reducer });
+const withSaga = injectSaga({ key: 'checkSessionIdcontainer', saga });
 
 export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(GetSession);
+)(CheckSessionIdcontainer);

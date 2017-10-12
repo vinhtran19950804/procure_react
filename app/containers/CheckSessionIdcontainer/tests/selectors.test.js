@@ -1,7 +1,7 @@
 // import { fromJS } from 'immutable';
-// import { selectGetSessionDomain } from '../selectors';
+// import { selectCheckSessionIdcontainerDomain } from '../selectors';
 
-describe('selectGetSessionDomain', () => {
+describe('selectCheckSessionIdcontainerDomain', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
