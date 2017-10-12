@@ -8,7 +8,13 @@ export function login(data) {
   });
 }
 
-export function getCode() {
-  const code = 'abcdef';
+function getSession(sessionID) {
+  return fetch(`http://localhost:1337/session/check/${sessionID}`,{
+    method: 'POST'
+  })
+}
+
+export function getCode(sessionID) {
+  const code = sessionID;
   return code;
 }

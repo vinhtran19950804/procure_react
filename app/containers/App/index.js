@@ -15,6 +15,7 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import LoginContainer from 'containers/LoginContainer/index';
 import UserContainer from 'containers/UserContainer/index';
+import GetSession from 'containers/GetSession/index'
 
 import {
   getCode,
@@ -31,12 +32,15 @@ const AppWrapper = styled.div`
 
 export default class App extends React.Component {
   render() {
-    const userUrl = getCode();
+    const localStorageRef = localStorage.getItem('sessionID');
+
+    const userUrl = getCode(localStorageRef);
     const loginUrl = `/login/${userUrl}`;
     return (
       <AppWrapper>
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route path="/session/:sessionID" component={GetSession} />
           <Route path="/features" component={FeaturePage} />
           <Route path={loginUrl} component={LoginContainer} />
           <Route path="/user/:status" component={UserContainer} />
